@@ -39,3 +39,18 @@ presidente = Funcionario(escolaridade)
 grupo = Grupo()
 grupo.set_presidente(presidente)
 print(grupo.get_nome_escolaridade_presidente())
+
+
+
+def __init__(self):
+        self.turmas = []
+
+    def adicionar_turma(self, turma):
+        self.turmas.append(turma)
+
+    def exibir_professores_do_curso(self):
+        print("Professores que lecionam neste curso:")
+        for turma in self.turmas:
+            professor = turma.get_professor()
+            if professor:
+                print(professor.get_nome())
