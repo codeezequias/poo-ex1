@@ -1,5 +1,3 @@
-EXEMPLOS: (DE HPJE TA LA EM BAIXO)
-
 
 class Cargo:
     def __init__(self, salario_bruto):
@@ -68,7 +66,6 @@ class Funcionario(Pessoa):
 
 
 =====================================
-DE HOJE ( MODELO DO CHAT, ALTERA TUDO AI)
 
 class Cargo:
     def __init__(self, salario_bruto):
