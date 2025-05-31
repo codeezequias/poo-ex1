@@ -54,3 +54,94 @@ def __init__(self):
             professor = turma.get_professor()
             if professor:
                 print(professor.get_nome())
+# Definição das classes com base no diagrama
+
+class Escolaridade:
+    def __init__(self, grau):
+        self.grau = grau
+
+
+class Cidade:
+    def __init__(self, nome):
+        self.nome = nome
+
+
+class Estado:
+    def __init__(self, nome, cidade):
+        self.nome = nome
+        self.cidade = cidade
+
+
+class Pais:
+    def __init__(self, nome, estado):
+        self.nome = nome
+        self.estado = estado
+
+
+class Grupo:
+    def __init__(self, presidente, sede):
+        self.presidente = presidente
+        self.sede = sede
+
+
+class Empresa:
+    def __init__(self, diretor, grupo):
+        self.diretor = diretor
+        self.grupo = grupo
+
+
+class Departamento:
+    def __init__(self, chefe):
+        self.chefe = chefe
+
+
+class Filial:
+    def __init__(self, departamento):
+        self.departamento = departamento
+
+
+class Funcionario:
+    def __init__(self, nome, escolaridade, alocacao, coordena=None):
+        self.nome = nome
+        self.escolaridade = escolaridade
+        self.alocacao = alocacao
+        self.coordena = coordena
+
+
+# Criação dos objetos simulando uma situação real
+cidade = Cidade("São Paulo")
+estado = Estado("SP", cidade)
+pais = Pais("Brasil", estado)
+
+escolar_presidente = Escolaridade("Doutorado")
+presidente = Funcionario("Carlos", escolar_presidente, None)
+
+grupo = Grupo(presidente, pais)
+empresa = Empresa("Mariana", grupo)
+
+escolar_chefe = Escolaridade("Mestrado")
+chefe_departamento = Funcionario("Fernanda", escolar_chefe, None)
+
+departamento = Departamento(chefe_departamento)
+filial = Filial(departamento)
+
+escolar_func = Escolaridade("Graduação")
+funcionario = Funcionario("João", escolar_func, departamento, coordena=filial)
+
+
+# Respostas das perguntas
+
+print("1. Escolaridade do presidente de um grupo:")
+print(grupo.presidente.escolaridade.grau)  # Doutorado
+
+print("\n2. País de alocação de um funcionário:")
+print(grupo.sede.nome)  # Brasil
+
+print("\n3. Estado da filial que um funcionário coordena:")
+print(grupo.sede.estado.nome)  # SP
+
+print("\n4. Escolaridade do chefe de um departamento:")
+print(departamento.chefe.escolaridade.grau)  # Mestrado
+
+print("\n5. Nome do diretor da empresa de uma filial:")
+print(empresa.dir
