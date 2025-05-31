@@ -60,4 +60,32 @@ class Funcionario(Pessoa):
                 elif o.tipo == 'desconto':
                     salario -= o.valor
 
-        salario +
+        salario += len(self.dependentes) * 100  # R$100 por dependente
+        return salario
+
+
+# Simulação com dados reais
+
+cargo = Cargo(3000)
+departamento = Departamento("Engenharia de Software")
+func = Funcionario("João", cargo, departamento)
+
+# Adiciona dependentes
+func.adicionar_dependente(Dependente("Maria", "2015-06-01"))
+func.adicionar_dependente(Dependente("Lucas", "2012-03-10"))
+
+# Adiciona ocorrências
+func.adicionar_ocorrencia(Ocorrencia(5, 2025, 'acrescimo', 500, "Bônus de desempenho"))
+func.adicionar_ocorrencia(Ocorrencia(5, 2025, 'desconto', 200, "Atraso"))
+func.adicionar_ocorrencia(Ocorrencia(4, 2025, 'acrescimo', 1000, "Mês anterior"))  # Ignorado
+
+# Testes e respostas
+
+print("1) Salário líquido do funcionário em 05/2025:")
+print(f"R$ {func.calcular_salario_liquido(5, 2025):.2f}")  # Esperado: 3000 + 500 - 200 + (2 * 100) = 3500
+
+print("\n2) Dependentes do funcionário:")
+print(func.retornar_dependentes())  # ['Maria', 'Lucas']
+
+print("\n3) Nome do departamento do funcionário:")
+print(func.retornar_departamento())  # Engenharia de Software
