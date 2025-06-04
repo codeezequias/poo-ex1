@@ -1,164 +1,63 @@
-Class Vetorordenado Preco:
+Contexto
 
-def __init__(self, capacidade=5):
+A partir da mesma ideia de manter produtos em um vetor ordenado por código, agora cada item tem preço e quantidade em estoque. Seu programa deve permitir controle de entradas e saldas de estoque, além de relatórios de valor total
 
-self._tamannho = 0
+Objetivos
 
-def redimensionar(self):
+1. Adaptar a estrutura para três listas paralelas: códigos, preços e quantidades
 
-nova_cap len(self._codigos) * 2
+2. Manter a ordenação crescente por código a cada inserção.
 
-self._codigos.extend([None] * (nova_cap len(self._codigos)))
+3. Implementar os métodos:
 
-self._codigos.extend([None] * (nova_cap len(self._precos)))
+inseriricodigo: int, preco: float, quantidade: int)
 
-print(f" [DEBUG] Redimensionado para capacidade (nova_cap}")
+remover codigo: int)
 
-def inserir(self, codigo: int, preco: float):
+buscar codigo: int) int
 
-if self. tamannho == len(self._codigos):
+atualizar estoque(codigo: int, delta: int)
 
-self._redimensionar()
+calcular_valor_total()->ficat
 
-pos = 0
+imprimir) None
 
-while pos< self._tamannho and self._codigos[pos] < codigo: 1 pos += 1
+4. Exibir trace interno em todas as operações de deslocamento, inserção, remoção e atualização de estoque
 
-for i in range(self._tamannho, pos, -1):
+5. Redimensionar automaticamente as listas quando atingirem a capacidade.
 
-print(
+6. Tratar tentativas de buscar, remover ou atualizar produtos inexistentes.
 
-f"[DEBUG] Movendo do indice {1-1} para {1}: "
+Formato de Interação
 
-f"({self._codigos[1-1]}, {self._precos[i-1]})"
-)
-self._codigos[i] = self._codigos[i - 1]
+I codigos precos quantidade> inserir novo produto
 
-self. precos[1] = self._precos[i - 1]
+Rcodigo remover produto do cadastro
 
-print(f"[DEBUG] Espaço aberto no inicio (pos)")
+codigos buscar produto (retorna indice)
 
-self._codigos [pos] = codigo
+codigo «deltas ajustar quantidade (positivo ou negativo)
 
-self._precos [pos] = preco
+mostrar valor total de todos os itens em estoque
 
-self._tamannho += 1
+imprimir lista completa
 
-Exibe o estado atual do vetor (apenas até self._tamanho)
+s-sair
 
-estado [(self. codigos[1], self. precos[1]) for i in range(self._tamanho)]
+Requisitos
 
-print("[DEBUG] Inserido ((codigo), (preco)) vetor: (estado":
+Não usar list, sort()
 
-def remover(self, codigo: int):
+Incluir docstrings e comentarios inline explicativos em todo o código
 
-Remove o produto com o código especificado.
+Nome do arquivo de entrega: exercicio_53_estoque.py
 
-Desloca elementos à esquerda para preencher o espaço vazio.
+Critérios de Avaliação
 
-idx= self.buscar (codigo) #busca o indice do código ou -1
+Correta manutenção da ordenação por código em todas as inserções
 
-if idx-1:
+Funcionamento de inserção, remoção, busca, atualização de estoque e cálculo de valor total.
 
-print("[DEBUG] Código (codigo) não encontrado para remoção.")
+Trace interno detalhado de cada deslocamento e de cada ajuste de quantidade.
 
-for i in range(self._tamanho):
-
-print("[DEBUG] Comparando indice (1): (self._codigos[i]} com (codigo)")
-
-if self. codigos[i] = codigo:
-
-return 1
-
-return -1
-
-def imprimir(self):
-
-Exibe todos os produtos cadastrados como Lista de tuplas (codigo, preco).
-
-produtos [(self. codigos[i], self. precos [1]) for i in range(self. tamanho)]
-
-
-def imprimir(self):
-
-Exibe todos os produtos cadastrados cono lista de tuplas (codigo, preca).
-
-produtos [(self. codigos[i], self. precos[1])
-
-for i in range(self._tawanho)]
-
-print("[DEBUG] Produtos cadastrados:", produtos)
-
-class VetorordenadoPreco:
-
-def executar():
-
-vet VetorordenadoPreco()
-
-while True:
-
-entrada input(">").strip().split()
-
-if not entrada:
-
-continue
-
-cmd = entrada[8].upper()
-
-if cmd == "I":
-
-vet.inserir(int(entrada [1]), float(entrada [2]))
-
-elif cmd = "R": vet.remover(int (entrada [1])) elif cmd = "B":
-
-posvet.buscar (int(entrada[1]))
-
-if pos-1:
-
-print(f"Código {entrada [1]} encontrado na posição (pos).")
-
-else:
-
-print("Código (entrada [1]} não encontrado.")
-
-elif cmd = "P":
-
-def executar():
-
-vet.inserir(int (entrada [2]), float(entrada[2]))
-
-elif cmd == "R":
-
-vet.remover(int(entrada [1]))
-
-elif cmd == "B":
-
-posvet.buscar (int (entrada [1]))
-
-if pos1:
-
-print("Código (entrada [1]} encontrado na posição (pos).")
-
-else:
-
-print("Código (entrada(1)} não encontrado.")
-
-elif cmd ==  "P":
-
-vet.imprimir()
-
-elif cmd = "S":
-
-print("Encerrando.")
-
-break
-
-else:
-
-print("Use I <codigo> <preco>, R <codigo>, 8 <codigo>, Pου S.")
-
-
-
-If
-name="main":
-executar()
+Tratamento robusto de entradas inválidas e de operações sobre códigos não cadastrados
